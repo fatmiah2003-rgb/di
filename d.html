@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1688c7">
+<title>المنصة التوعوية الوطنية لداء السكري</title>
+<style>
+:root{--blue:#1688c7;--blue2:#46b5e5;--navy:#155b83;--pale:#eaf7ff;--paler:#f5fbff;--white:#fff;--ink:#24445e;--muted:#66849a;--line:#d6eaf6;--shadow:0 8px 25px #286b9010}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paler);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+button,input,select{font:inherit}
+header{background:linear-gradient(115deg,#0d659b,#1688c7 55%,#65c4e9);color:#fff;box-shadow:0 8px 24px #135e8722}
+.header-inner{max-width:1200px;margin:auto;padding:22px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px}
+.logo-wrap{background:#fff;padding:7px;border-radius:16px;box-shadow:0 5px 20px #063c602e}
+.logo{width:104px;height:104px;object-fit:contain;display:block}
+h1{font-size:clamp(21px,3vw,31px);line-height:1.4;margin:0;font-weight:900}
+.header-sub{color:#e0f5ff;font-size:13px;margin-top:5px}
+.header-note{background:#ffffff1c;border:1px solid #ffffff55;border-radius:14px;padding:10px 14px;font-size:12px}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 4px 15px #1d63830d}
+.nav-inner{max-width:1200px;margin:auto;padding:10px 14px;display:flex;gap:7px;overflow-x:auto}
+.tab-btn{white-space:nowrap;border:0;border-radius:12px;padding:10px 14px;background:#edf7fd;color:#376b89;cursor:pointer;font-size:13px;font-weight:700;transition:.2s}
+.tab-btn:hover{background:#d9f0fc}
+.tab-btn.active{background:var(--blue);color:#fff;box-shadow:0 4px 12px #1688c744}
+main{max-width:1200px;margin:auto;padding:24px 18px 40px;min-height:60vh}
+.tab-content{display:none}.tab-content.active{display:block;animation:appear .25s ease}
+@keyframes appear{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(130deg,#dff3ff,#f8fdff);border:1px solid #cbe9f8;border-radius:25px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:var(--shadow)}
+.hero-copy{max-width:760px}.eyebrow{display:inline-block;background:#c8ebfb;color:#126b9e;border-radius:30px;padding:5px 12px;font-size:12px;font-weight:800}
+.hero h2{font-size:clamp(24px,4vw,36px);line-height:1.5;color:#125e8b;margin:12px 0}
+.hero p{color:#426d87;margin:0 0 18px}
+.hero-mark{font-size:82px;color:#73c5e8;opacity:.8;padding:10px}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:11px 17px;cursor:pointer;font-weight:800;font-size:13px}
+.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:#0e70aa}
+.btn-light{background:#fff;color:#176d9f;border:1px solid #b8dff2}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);margin:14px 0}
+.card h2,.section-title{font-size:22px;color:#155f8c;margin:0 0 10px}
+.card h3{font-size:17px;color:#176b98;margin:0 0 8px}
+.card p{margin:7px 0;color:#526f83}
+.quick-card{cursor:pointer;transition:.2s}.quick-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px #286b9020}
+.icon-box{width:48px;height:48px;border-radius:14px;background:#e1f3fc;color:#1688c7;display:grid;place-items:center;font-size:23px;margin-bottom:12px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.info-box{background:#f0f9ff;border:1px solid #d5edf9;border-radius:14px;padding:14px}
+.info-box strong{color:#155f8c}
+.note{background:#eef8ff;border-right:4px solid var(--blue2);padding:13px;border-radius:10px;color:#426d87;font-size:13px;margin:12px 0}
+table{width:100%;border-collapse:collapse;min-width:680px;background:#fff;font-size:13px}
+th{background:#176f9f;color:#fff;text-align:right;padding:13px}
+td{padding:13px;border-bottom:1px solid #e6f0f6}
+tr:nth-child(even){background:#f4faff}
+.good{color:#13805d;font-weight:800}.warn{color:#a66b0b;font-weight:800}.bad{color:#bd4553;font-weight:800}
+.table-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--line);margin:15px 0}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;align-items:end}
+label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}
+input,select{width:100%;border:1px solid #c9dfeb;border-radius:11px;padding:11px;background:#fff;color:var(--ink)}
+.result{display:none;padding:15px;border-radius:13px;margin-top:14px;font-size:14px;font-weight:700}
+.plate{width:min(280px,75vw);aspect-ratio:1;border:9px solid #d8e7ef;border-radius:50%;overflow:hidden;margin:auto;background:#fff;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;box-shadow:inset 0 2px 9px #00000010}
+.plate div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px;font-size:13px;font-weight:800}
+.plate .veg{grid-row:1/3;background:#dff4e9;color:#176b4b}
+.plate .protein{background:#e1f2ff;color:#155f8c;border-right:2px solid #fff}
+.plate .grain{background:#fff0d7;color:#946018;border-top:2px solid #fff;border-right:2px solid #fff}
+.plate-layout{display:grid;grid-template-columns:minmax(230px,1fr) minmax(260px,1.4fr);gap:25px;align-items:center;background:#f4faff;border:1px solid var(--line);padding:20px;border-radius:18px}
+.list{padding-right:20px}.list li{margin:8px 0;color:#526f83}
+.modal{position:fixed;inset:0;background:#092b4080;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}.modal-box{background:#fff;border-radius:20px;padding:24px;max-width:430px;width:100%;text-align:center;box-shadow:0 20px 60px #0003}
+.modal-box h3{color:#176b98;margin:0 0 10px}
+.quiz-option{display:block;width:100%;text-align:right;background:#f0f8fd;border:1px solid #d4e9f5;border-radius:12px;padding:12px;margin:8px 0;cursor:pointer;color:var(--ink)}
+.quiz-option:disabled{opacity:.9;cursor:default}.progress{height:9px;background:#e2eff6;border-radius:20px;overflow:hidden}.progress span{height:100%;display:block;width:0;background:var(--blue);transition:.2s}
+footer{background:#e5f4fc;color:#54758a;text-align:center;padding:24px 15px;font-size:12px;line-height:2;border-top:1px solid #cfe7f4}
+footer strong{color:#155f8c}
+@media(max-width:650px){.header-inner{justify-content:center;text-align:center}.brand{flex-direction:column}.hero{padding:21px}.hero-mark{display:none}.plate-layout{grid-template-columns:1fr}main{padding:14px 11px 30px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="brand">
+   <div class="logo-wrap"><img class="logo" src="data:image/jpeg;base64,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" alt="شعار اليوم العالمي للسكري"></div>
+   <div><h1>المنصة التوعوية الوطنية لداء السكري</h1><div class="header-sub">التوعية والمعرفة والرعاية الذاتية • اليوم العالمي للسكري</div></div>
+  </div>
+  <div class="header-note">💙 الوعي بالسكري مسؤولية الجميع<br>مدرسة ابتدائية عفراء للطفولة المبكرة</div>
+ </div>
+</header>
+
+<nav><div class="nav-inner">
+<button class="tab-btn active" data-target="home">⌂ الرئيسية</button>
+<button class="tab-btn" data-target="types">أنواع السكري وأسبابه</button>
+<button class="tab-btn" data-target="calculator">الأرقام والفحوصات</button>
+<button class="tab-btn" data-target="nutrition">الطبق المثالي والتغذية</button>
+<button class="tab-btn" data-target="sports">النشاط البدني</button>
+<button class="tab-btn" data-target="footcare">العناية بالقدمين</button>
+<button class="tab-btn" data-target="myths">المفاهيم والحقائق</button>
+</div></nav>
+
+<main>
+<section id="home" class="tab-content active">
+ <div class="hero">
+  <div class="hero-copy">
+   <span class="eyebrow">دليل توعوي صحي</span>
+   <h2>معرفة اليوم.. صحة أفضل كل يوم</h2>
+   <p>منصة تثقيفية تساعد أفراد المجتمع على فهم داء السكري، والتعرف على عوامل الخطورة، واتباع عادات صحية، وفهم أهمية المتابعة الطبية والرعاية الذاتية.</p>
+   <div class="actions">
+    <button class="btn btn-primary" onclick="switchTab('calculator')">استكشف الأرقام والفحوصات</button>
+    <button class="btn btn-light" onclick="switchTab('nutrition')">اكتشف الطبق الصحي</button>
+   </div>
+  </div><div class="hero-mark">♡</div>
+ </div>
+ <div class="cards">
+  <article class="card quick-card" onclick="switchTab('types')"><div class="icon-box">🩺</div><h3>أنواع السكري وعوامل الخطورة</h3><p>تعرف على الأنواع الرئيسية والعوامل التي قد تزيد احتمال الإصابة.</p></article>
+  <article class="card quick-card" onclick="switchTab('calculator')"><div class="icon-box">📊</div><h3>الأرقام والفحوصات</h3><p>تعرف على مستويات السكر الصائم والتراكمي واختبار تحمل الجلوكوز.</p></article>
+  <article class="card quick-card" onclick="switchTab('footcare')"><div class="icon-box">👟</div><h3>العناية بالقدمين</h3><p>إرشادات يومية للوقاية من الجروح وملاحظة التغيرات مبكراً.</p></article>
+  <article class="card quick-card" onclick="switchTab('myths')"><div class="icon-box">💡</div><h3>المفاهيم والحقائق</h3><p>صحح بعض المفاهيم الشائعة عن الأنسولين والأدوية وقياس السكر.</p></article>
+ </div>
+ <div class="note">هذه المنصة للتوعية والتثقيف، ولا تغني عن التشخيص أو الاستشارة الطبية الفردية.</div>
+</section>
+
+<section id="types" class="tab-content">
+ <div class="card">
+  <h2>أنواع داء السكري وعوامل الخطورة</h2>
+  <p>تختلف أنواع السكري في أسبابها وطريقة التعامل معها، ويحدد الفريق الطبي الخطة المناسبة لكل حالة.</p>
+  <div class="grid-3">
+   <div class="info-box"><h3>السكري من النوع الأول</h3><p>حالة مناعية ذاتية يهاجم فيها الجهاز المناعي خلايا بيتا المنتجة للأنسولين في البنكرياس، ما يؤدي إلى نقص شديد في الأنسولين.</p><p><strong>العلاج:</strong> يحتاج المصاب إلى الأنسولين ومتابعة منتظمة.</p></div>
+   <div class="info-box"><h3>السكري من النوع الثاني</h3><p>يرتبط بمقاومة الجسم للأنسولين وعدم قدرة البنكرياس على توفير ما يكفي من الأنسولين مع مرور الوقت.</p><p><strong>التعامل:</strong> نمط حياة صحي وأدوية، وقد يحتاج بعض الأشخاص إلى الأنسولين.</p></div>
+   <div class="info-box"><h3>سكري الحمل</h3><p>ارتفاع سكر الدم الذي يُشخّص خلال الحمل. يحتاج إلى متابعة أثناء الحمل وبعد الولادة، إذ قد يستمر أو يزيد خطر الإصابة بالنوع الثاني لاحقاً.</p></div>
+  </div>
+  <h3 style="margin-top:22px">عوامل قد تزيد خطر الإصابة بالنوع الثاني</h3>
+  <div class="cards">
+   <div class="info-box">⚖️ زيادة الوزن أو السمنة</div><div class="info-box">👨‍👩‍👧 التاريخ العائلي</div><div class="info-box">🪑 قلة النشاط البدني</div><div class="info-box">❤️ ارتفاع ضغط الدم أو اضطراب الدهون</div><div class="info-box">🕰️ التقدم في العمر وبعض عوامل الخطورة الأخرى</div>
+  </div>
+ </div>
+</section>
+
+<section id="calculator" class="tab-content">
+ <div class="card">
+  <h2>الأرقام المرجعية لفحوصات تشخيص السكري</h2>
+  <p>القيم التالية هي حدود شائعة للبالغين غير الحوامل. لا يكفي اختبار منزلي منفرد لتشخيص السكري؛ غالباً يلزم تأكيد النتيجة مخبرياً وتقييم الطبيب.</p>
+  <div class="table-wrap"><table>
+   <thead><tr><th>نوع الفحص</th><th>طبيعي</th><th>ما قبل السكري</th><th>نطاق تشخيص السكري</th></tr></thead>
+   <tbody>
+    <tr><td>سكر الدم الصائم (8 ساعات على الأقل)</td><td class="good">أقل من 100 ملغ/دسل</td><td class="warn">100–125</td><td class="bad">126 أو أكثر</td></tr>
+    <tr><td>السكر التراكمي HbA1c</td><td class="good">أقل من 5.7%</td><td class="warn">5.7–6.4%</td><td class="bad">6.5% أو أكثر</td></tr>
+    <tr><td>اختبار تحمل الجلوكوز بعد ساعتين</td><td class="good">أقل من 140 ملغ/دسل</td><td class="warn">140–199</td><td class="bad">200 أو أكثر</td></tr>
+   </tbody>
+  </table></div>
+  <div class="note">تختلف المعايير في الحمل وبعض الحالات الطبية، وقد تتأثر دقة HbA1c ببعض اضطرابات الدم. يفسر الطبيب النتائج في سياق الحالة.</div>
+ </div>
+ <div class="card">
+  <h2>أداة توعوية لفهم القراءة</h2>
+  <p>اختر نوع الفحص وأدخل نتيجتك للحصول على شرح عام للحدود المرجعية، وليس تشخيصاً.</p>
+  <div class="form-grid">
+   <div><label for="testType">نوع الفحص</label><select id="testType"><option value="fasting">سكر صائم (ملغ/دسل)</option><option value="hba1c">سكر تراكمي (%)</option><option value="ogtt">تحمل الجلوكوز بعد ساعتين (ملغ/دسل)</option></select></div>
+   <div><label for="testValue">قيمة القراءة</label><input id="testValue" type="number" min="0" step="any" placeholder="أدخل القيمة"></div>
+   <div><button class="btn btn-primary" style="width:100%" onclick="evaluateSugar()">عرض التفسير</button></div>
+  </div>
+  <div id="evalResult" class="result" aria-live="polite"></div>
+ </div>
+</section>
+
+<section id="nutrition" class="tab-content">
+ <div class="card">
+  <h2>التغذية الصحية والطبق المتوازن</h2>
+  <p>يساعد اختيار وجبات متنوعة ومتوازنة على دعم الصحة العامة وإدارة مستوى السكر ضمن الخطة المناسبة لكل شخص.</p>
+  <div class="plate-layout">
+   <div class="plate" aria-label="نموذج الطبق المتوازن">
+    <div class="veg"><span style="font-size:25px">🥦</span><strong>½ الطبق</strong><span>خضروات غير نشوية</span></div>
+    <div class="protein"><span style="font-size:23px">🐟</span><strong>¼ الطبق</strong><span>بروتين صحي</span></div>
+    <div class="grain"><span style="font-size:23px">🌾</span><strong>¼ الطبق</strong><span>حبوب كاملة أو نشويات</span></div>
+   </div>
+   <div><h3>طريقة تقسيم الطبق</h3>
+    <ul class="list">
+     <li><strong>النصف:</strong> خضروات غير نشوية مثل الخيار والخس والبروكلي.</li>
+     <li><strong>الربع:</strong> مصدر بروتين مثل السمك أو الدجاج أو البيض أو البقول.</li>
+     <li><strong>الربع:</strong> حبوب كاملة أو مصدر نشويات مناسب للحصة.</li>
+     <li><strong>المشروبات:</strong> الماء خيار مناسب، وتُراعى الاحتياجات الفردية.</li>
+    </ul>
+   </div>
+  </div>
+  <div class="grid-3" style="margin-top:18px">
+   <div class="info-box"><h3>🛒 قراءة الملصق الغذائي</h3><p>راجع حجم الحصة، والكربوهيدرات الكلية، والسكريات المضافة، والصوديوم والدهون المشبعة.</p></div>
+   <div class="info-box"><h3>🥤 اختيارات المشروبات</h3><p>اجعل الماء الخيار الأساسي، وقلل المشروبات المحلاة.</p></div>
+   <div class="info-box"><h3>🍽️ الاعتدال والتنوع</h3><p>انتبه لحجم الحصص ووزع الوجبات بما يناسب خطتك الصحية.</p></div>
+  </div>
+  <div class="note">تقسيم الطبق إرشاد بصري عام، وقد يحتاج بعض الأشخاص إلى خطة غذائية فردية من اختصاصي التغذية.</div>
+ </div>
+</section>
+
+<section id="sports" class="tab-content">
+ <div class="card">
+  <h2>النشاط البدني وإدارة السكري</h2>
+  <p>النشاط البدني المنتظم يدعم صحة القلب والعضلات، وقد يحسن حساسية الجسم للأنسولين. اختر نشاطاً آمناً يناسب قدراتك وحالتك الصحية.</p>
+  <div class="grid-3">
+   <div class="info-box"><h3>⏱️ المدة</h3><p>يُوصى كثير من البالغين بنحو 150 دقيقة أسبوعياً من النشاط المعتدل، وفق القدرة والتوجيه الطبي.</p></div>
+   <div class="info-box"><h3>🩸 قبل النشاط</h3><p>قد يحتاج مستخدمو الأنسولين أو بعض أدوية السكري إلى فحص السكر واتباع خطة خاصة لتجنب الهبوط. لا توجد قراءة واحدة مناسبة للجميع.</p></div>
+   <div class="info-box"><h3>💧 أثناء وبعد النشاط</h3><p>احرص على الترطيب، وراقب الأعراض ومستوى السكر وفق خطة الرعاية. انتبه لاحتمال انخفاض السكر بعد التمرين.</p></div>
+  </div>
+  <h3 style="margin-top:20px">قائمة أنشطة يمكنك اختيارها</h3>
+  <div id="activityList" class="grid-3">
+   <label class="info-box"><input type="checkbox" class="activity"> 🚶 المشي</label>
+   <label class="info-box"><input type="checkbox" class="activity"> 🚴 ركوب الدراجة</label>
+   <label class="info-box"><input type="checkbox" class="activity"> 🏊 السباحة</label>
+   <label class="info-box"><input type="checkbox" class="activity"> 💃 الحركة والرقص</label>
+   <label class="info-box"><input type="checkbox" class="activity"> 🧘 تمارين المرونة</label>
+   <label class="info-box"><input type="checkbox" class="activity"> 🏋️ تمارين المقاومة المناسبة</label>
+  </div>
+  <p id="activityCount" class="good">اخترت 0 أنشطة.</p>
+  <button class="btn btn-light" onclick="resetActivities()">إعادة تعيين الاختيارات</button>
+ </div>
+</section>
+
+<section id="footcare" class="tab-content">
+ <div class="card">
+  <h2>العناية بالقدمين لدى المصابين بالسكري</h2>
+  <p>قد يؤثر السكري في الأعصاب والدورة الدموية، لذلك تساعد العناية اليومية وملاحظة أي تغير مبكراً على تقليل خطر المضاعفات.</p>
+  <div class="grid-3">
+   <div class="info-box"><h3 class="good">✓ افعل</h3><ul class="list"><li>افحص القدمين يومياً، بما في ذلك باطن القدم وبين الأصابع.</li><li>اغسل القدمين وجففهما بلطف، خاصة بين الأصابع.</li><li>رطّب الجلد الجاف مع تجنب وضع المرطب بين الأصابع.</li><li>افحص داخل الحذاء قبل ارتدائه.</li><li>ارتدِ حذاءً مناسباً وجوارب مريحة.</li></ul></div>
+   <div class="info-box"><h3 class="bad">✕ تجنب</h3><ul class="list"><li>المشي حافياً، خصوصاً خارج المنزل.</li><li>الأحذية التي تسبب ضغطاً أو احتكاكاً.</li><li>استخدام أدوات حادة أو علاجات منزلية لإزالة مسمار القدم.</li><li>تعريض القدم لمصادر حرارة مباشرة.</li><li>إهمال الجروح أو تغير لون الجلد أو التورم.</li></ul></div>
+   <div class="info-box"><h3>👟 الحذاء المناسب</h3><ul class="list"><li>مريح وملائم لطول وعرض القدم.</li><li>مساحة كافية للأصابع دون ضغط.</li><li>بطانة داخلية ناعمة وخالية من الحواف المؤذية.</li><li>افحص القدم بعد ارتداء الحذاء بحثاً عن علامات الاحتكاك.</li></ul></div>
+  </div>
+  <div class="note">إذا ظهر جرح أو احمرار مستمر أو تورم أو سخونة أو تغير لون القدم، اطلب تقييماً طبياً سريعاً، ولا تحاول علاج الجرح بنفسك.</div>
+ </div>
+</section>
+
+<section id="myths" class="tab-content">
+ <div class="card">
+  <h2>المفاهيم الخاطئة والحقائق العلمية</h2>
+  <div class="card" style="border-right:5px solid #e58c99">
+   <h3>المفهوم الخاطئ: «الأنسولين يسبب الإدمان أو التعود»</h3>
+   <p><strong class="good">الحقيقة:</strong> الأنسولين علاج هرموني ضروري لبعض المصابين. لا يُعد إدماناً، ولا ينبغي إيقافه أو تغيير جرعته دون الطبيب.</p>
+  </div>
+  <div class="card" style="border-right:5px solid #e58c99">
+   <h3>المفهوم الخاطئ: «الأعشاب والخلطات تشفي السكري»</h3>
+   <p><strong class="good">الحقيقة:</strong> لا توجد خلطة عشبية مثبتة تشفي السكري. قد تتداخل بعض المنتجات مع الأدوية أو تسبب أضراراً؛ استشر الطبيب قبل استخدامها.</p>
+  </div>
+  <div class="card" style="border-right:5px solid #e58c99">
+   <h3>المفهوم الخاطئ: «إذا شعرت أنني بخير فلا حاجة للمتابعة»</h3>
+   <p><strong class="good">الحقيقة:</strong> قد تتغير مستويات السكر دون أعراض واضحة. تساعد الفحوصات والمتابعة وفق خطة الطبيب على إدارة الحالة.</p>
+  </div>
+  <div class="card" style="border-right:5px solid #e58c99">
+   <h3>المفهوم الخاطئ: «كل المصابين بالسكري يجب أن يتبعوا الخطة نفسها»</h3>
+   <p><strong class="good">الحقيقة:</strong> تختلف الخطة العلاجية والغذائية والنشاط المناسب بحسب نوع السكري والعمر والأدوية والحالة الصحية.</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <strong>إعداد المعلمة: فاطمه الشهراني</strong><br>
+ الموجهه الصحيه: صينه علي القرني<br>
+ مديرة المدرسة: فاطمه سعيد القرني<br>
+ مدرسة ابتدائية عفراء للطفولة المبكرة<br>
+ <strong>منصة توعوية مجتمعية • اليوم العالمي للسكري</strong>
+</footer>
+
+<div class="modal" id="customModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-box"><div style="font-size:36px;color:#1688c7">💙</div><h3 id="modalTitle">نصيحة صحية</h3><p id="modalMessage"></p><button class="btn btn-primary" onclick="closeModal()">فهمت، شكراً</button></div>
+</div>
+
+<script>
+function switchTab(id){
+ document.querySelectorAll('.tab-content').forEach(x=>x.classList.toggle('active',x.id===id));
+ document.querySelectorAll('.tab-btn').forEach(x=>x.classList.toggle('active',x.dataset.target===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.target)));
+function showInfoModal(title,message){
+ document.getElementById('modalTitle').textContent=title;
+ document.getElementById('modalMessage').textContent=message;
+ document.getElementById('customModal').classList.add('show');
+}
+function closeModal(){document.getElementById('customModal').classList.remove('show')}
+document.getElementById('customModal').addEventListener('click',e=>{if(e.target.id==='customModal')closeModal()});
+function evaluateSugar(){
+ const type=document.getElementById('testType').value;
+ const value=Number(document.getElementById('testValue').value);
+ const box=document.getElementById('evalResult');
+ box.style.display='block';
+ if(document.getElementById('testValue').value.trim()===''||!Number.isFinite(value)||value<0){
+  box.style.background='#fff0f1';box.style.color='#a12f42';box.textContent='يرجى إدخال قيمة رقمية صحيحة.';return;
+ }
+ let message='',tone='';
+ if(type==='fasting'){
+  if(value<100){message='القراءة ضمن النطاق الطبيعي لسكر الصائم (أقل من 100 ملغ/دسل).';tone='good'}
+  else if(value<126){message='القراءة ضمن نطاق ما قبل السكري (100–125 ملغ/دسل). ناقش النتيجة مع الطبيب.';tone='warn'}
+  else{message='القراءة تبلغ حد تشخيص السكري أو تتجاوزه (126 ملغ/دسل فأكثر). يلزم تقييم طبي وفحوصات تأكيدية.';tone='bad'}
+ }else if(type==='hba1c'){
+  if(value<5.7){message='القراءة ضمن النطاق الطبيعي للسكر التراكمي (أقل من 5.7%).';tone='good'}
+  else if(value<6.5){message='القراءة ضمن نطاق ما قبل السكري (5.7%–6.4%). ناقش النتيجة مع الطبيب.';tone='warn'}
+  else{message='القراءة تبلغ حد تشخيص السكري أو تتجاوزه (6.5% فأكثر). يلزم تقييم طبي وتأكيد التشخيص.';tone='bad'}
+ }else{
+  if(value<140){message='القراءة ضمن النطاق الطبيعي لاختبار تحمل الجلوكوز بعد ساعتين (أقل من 140 ملغ/دسل).';tone='good'}
+  else if(value<200){message='القراءة ضمن نطاق ما قبل السكري (140–199 ملغ/دسل). ناقش النتيجة مع الطبيب.';tone='warn'}
+  else{message='القراءة تبلغ حد تشخيص السكري أو تتجاوزه (200 ملغ/دسل فأكثر). يلزم تقييم طبي وفحوصات تأكيدية.';tone='bad'}
+ }
+ const styles={good:['#e7f8f0','#176b4b'],warn:['#fff6df','#805b12'],bad:['#fff0f1','#a12f42']};
+ box.style.background=styles[tone][0];box.style.color=styles[tone][1];
+ box.textContent=message+' هذه أداة تثقيفية وليست تشخيصاً طبياً.';
+}
+document.querySelectorAll('.activity').forEach(x=>x.addEventListener('change',updateActivities));
+function updateActivities(){document.getElementById('activityCount').textContent='اخترت '+document.querySelectorAll('.activity:checked').length+' أنشطة.'}
+function resetActivities(){document.querySelectorAll('.activity').forEach(x=>x.checked=false);updateActivities()}
+</script>
+</body>
+</html>
